@@ -13,7 +13,7 @@ void DynConfig::InitializeNode() {
   nh_ = ros::NodeHandle("");
   pnh_ = ros::NodeHandle("~");
 
-  ratio_pub_ = nh_.advertise<std_msgs::Float64>("ratio", 1);
+  ratio_pub_ = nh_.advertise<std_msgs::Float32>("ratio", 1);
 }
 
 void DynConfig::startServices() {
@@ -35,7 +35,7 @@ void DynConfig::dynamicReconfigureCallback(
   const double ratio = config.ratio;
   std::cout << "ratio: " << ratio << std::endl;
 
-  std_msgs::Float64 msg;
+  std_msgs::Float32 msg;
   msg.data = ratio;
   ratio_pub_.publish(msg);
 }

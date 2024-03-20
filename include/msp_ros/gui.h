@@ -2,7 +2,7 @@
 
 #include <ros/ros.h>
 #include <std_msgs/Empty.h>
-#include <std_msgs/Float64.h>
+#include <std_msgs/Float32.h>
 #include <dynamic_reconfigure/server.h>
 #include <msp_ros/gui.h>
 #include <msp_ros/guiConfig.h>
