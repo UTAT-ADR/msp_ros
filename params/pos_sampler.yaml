@@ -1,0 +1,6 @@
+search_horizon: 10.0
+search_dt:   0.01
+search_tol:  0.001
+axis_weights: [ 1.0, 1.0, 1.0 ]
+min_index:   5
+hover_threshold: 0.2 # [m]
