@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="quad_name" default="msp"/>
+    <arg name="quad_name" default="adr"/>
     <arg name="rviz" default="true"/>
 
     <!-- GUI -->

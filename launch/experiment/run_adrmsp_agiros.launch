@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="quad_name" default="msp"/>
-    <arg name="pilot_config" default="msp_pilot.yaml"/>
+    <arg name="quad_name" default="adr"/>
+    <arg name="pilot_config" default="$(arg quad_name)_pilot.yaml"/>
     
     <arg name="serial_no"           default=""/>
     <arg name="usb_port_id"         default=""/>
@@ -58,7 +58,7 @@
 
         <!-- <include file="$(find vicon_bridge)/launch/vicon_195.launch"/> -->
 
-        <node name="agiros_pilot" pkg="agiros" type="msp_agiros" output="screen">
+        <node name="agiros_pilot" pkg="agiros" type="adrmsp_agiros" output="screen">
             <param name="agi_param_dir" value="$(find msp_ros)/params"/>
             <param name="ros_param_dir" value="$(find msp_ros)/parameters"/>
             <param name="pilot_config" value="$(arg pilot_config)"/>

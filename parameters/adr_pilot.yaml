@@ -9,12 +9,12 @@ pipeline:
     
   controller:
     type:               "MPC"
-    file:               "msp_mpc.yaml"
+    file:               "adr_mpc.yaml"
 
   bridge:
-    type:               "MSP"
+    type:               "ADRMSP"
 
-quadrotor:              "msp.yaml"
+quadrotor:              "adr.yaml"
 
 dt_min:                 0.01
 dt_telemetry:           0.1  # Publish telemetry messages with this period (used for GUI and IMU)
