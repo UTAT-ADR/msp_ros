@@ -62,8 +62,10 @@
             <param name="agi_param_dir" value="$(find msp_ros)/params"/>
             <param name="ros_param_dir" value="$(find msp_ros)/parameters"/>
             <param name="pilot_config" value="$(arg pilot_config)"/>
+            <!--Dynamic Configuration -->
+            <remap from="agiros_pilot/thrust_ratio" to="/ratio"/>
             <!--VIO -->
-            <remap from="agiros_pilot/odometry_estimate" to="t265/odom/sample"/>
+            <remap from="agiros_pilot/odometry_estimate" to="odom/sample"/>
             <!-- MSP bridge setup -->
             <param name="baudrate" value="1000000"/>
             <param name="device" value="/dev/ttyACM0"/>

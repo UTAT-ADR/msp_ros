@@ -1,0 +1,11 @@
+<launch>
+
+  <!-- Launch gui -->
+  <node pkg="msp_ros" name="msp_ros" type="gui_node" output="screen" >
+  </node>
+
+  <!-- Launch rqt_reconfigure -->
+  <node pkg="rqt_reconfigure" type="rqt_reconfigure" output="screen" name="rqt_reconfigure" />
+
+
+</launch>
