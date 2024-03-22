@@ -66,6 +66,8 @@
             <remap from="agiros_pilot/thrust_ratio" to="/ratio"/>
             <!--VIO -->
             <remap from="agiros_pilot/odometry_estimate" to="odom/sample"/>
+            <!--Voltage Monitor-->
+            <remap from="mavros/battery" to="bf/battery"/>
             <!-- MSP bridge setup -->
             <param name="baudrate" value="1000000"/>
             <param name="device" value="/dev/ttyACM0"/>
