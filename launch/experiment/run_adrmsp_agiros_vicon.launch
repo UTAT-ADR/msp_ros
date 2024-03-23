@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="quad_name" default="adr"/>
+    <arg name="pilot_config" default="$(arg quad_name)_pilot_vicon.yaml"/>
+
+    <group ns="$(arg quad_name)">
+        <!-- Launch T265 -->
+        <include file="$(find msp_ros)/launch/hardware/vio_265.launch"/>
+        <!-- Launch Vicon Bridge -->
+        <include file="$(find vicon_bridge)/launch/vicon_195.launch"/>
+
+        <node name="agiros_pilot" pkg="agiros" type="adrmsp_agiros" output="screen">
+            <param name="agi_param_dir" value="$(find msp_ros)/params"/>
+            <param name="ros_param_dir" value="$(find msp_ros)/parameters"/>
+            <param name="pilot_config" value="$(arg pilot_config)"/>
+            <!--Dynamic Configuration -->
+            <remap from="agiros_pilot/thrust_ratio" to="/ratio"/>
+            <!--VIO -->
+            <!-- <remap from="agiros_pilot/odometry_estimate" to="odom/sample"/> -->
+            <remap from="agiros_pilot/odometry_estimate" to="/odom/sample"/>
+            <remap from="agiros_pilot/pose_estimate" to="vicon_odom/vicon/pose"/>
+
+            <!-- MSP bridge setup -->
+            <param name="baudrate" value="1000000"/>
+            <param name="device" value="/dev/ttyACM0"/>
+            <param name="thrust_map_file" value="$(find msp_ros)/parameters/thrust_map/thrust_map_hover.csv"/>
+        </node>
+
+        <node name="vicon_odom" pkg="agiros" type="vicon_odom" output="screen">
+            <remap from="vicon_odom/vicon_in" to="vicon/adr_drone_1/adr_drone_1"/>
+            <remap from="vicon_odom/vicon_out" to="vicon_odom/vicon/pose"/>
+        </node>
+
+    </group>
+
+</launch>
