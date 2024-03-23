@@ -6,12 +6,15 @@ jump_pos_threshold:                     0.3
 jump_att_threshold:                     0.3
 R_vicon_pos:                            1.0e-5
 R_vicon_att:                            1.0e-5
-R_odom_vel:                             20.0
-R_odom_omega:                           20.0
+R_odom_vel:                             1.0e+1
+R_odom_omega:                           1.0e+3
 
-Q_pos:                                  1.0e-5
-Q_att:                                  1.0e+1
 Q_init_pos:                             1.0e-4
 Q_init_att:                             1.0e-2
+
+# Not used
+Q_pos:                                  1.0e-3
+Q_att:                                  1.0e-3
+
 
 
