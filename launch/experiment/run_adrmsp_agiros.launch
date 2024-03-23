@@ -71,7 +71,7 @@
             <!-- MSP bridge setup -->
             <param name="baudrate" value="1000000"/>
             <param name="device" value="/dev/ttyACM0"/>
-            <param name="thrust_map_file" value="$(find msp_ros)/parameters/thrust_map/thrust_map_hover.csv"/>
+            <param name="thrust_map_file" value="$(find msp_ros)/parameters/thrust_map/thrust_map_default.csv"/>
         </node>
 
     </group>

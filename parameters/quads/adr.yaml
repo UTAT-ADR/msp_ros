@@ -1,4 +1,4 @@
-mass:               1.05                         # [kg]
+mass:               1.0175                         # [kg]
 gravity:            9.8066
 
 tbm_fr:             [ 0.075, -0.10, 0.0]         # [m]
@@ -16,7 +16,7 @@ kappa:              0.022                    # [Nm/N]
 torCoeff:           0.022
 
 thrust_min:         0.0                       # [N]
-thrust_max:         8.5                       # [N] per motor
+thrust_max:         8.0                       # [N] per motor
 rotors_config:      "cross"
 
 aero_coeff_1:       [0.0, 0.0, 0.0] # [0.26, 0.28, 0.42] # [N/(v/m)]
