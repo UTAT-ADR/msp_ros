@@ -2,11 +2,11 @@ enable_timing:                          true
 update_on_get:                          true
 
 integrator_dt:                          0.001
-jump_pos_threshold:                     0.3
-jump_att_threshold:                     0.3
+jump_pos_threshold:                     10000
+jump_att_threshold:                     10000
 R_vicon_pos:                            1.0e-5
 R_vicon_att:                            1.0e-5
-R_odom_vel:                             1.0e+1
+R_odom_vel:                             1.0e+2
 R_odom_omega:                           1.0e+3
 
 Q_init_pos:                             1.0e-4

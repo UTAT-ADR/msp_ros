@@ -5,7 +5,7 @@
 
     <group ns="$(arg quad_name)">
         <!-- Launch T265 -->
-        <include file="$(find msp_ros)/launch/hardware/vio_265.launch"/>
+        <include file="$(find msp_ros)/launch/experiment/hardware/vio_t265.launch"/>
         <!-- Launch Vicon Bridge -->
         <include file="$(find vicon_bridge)/launch/vicon_195.launch"/>
 
@@ -17,18 +17,19 @@
             <remap from="agiros_pilot/thrust_ratio" to="/ratio"/>
             <!--VIO -->
             <!-- <remap from="agiros_pilot/odometry_estimate" to="odom/sample"/> -->
-            <remap from="agiros_pilot/odometry_estimate" to="/odom/sample"/>
-            <remap from="agiros_pilot/pose_estimate" to="vicon_odom/vicon/pose"/>
-
+            <remap from="agiros_pilot/odometry_estimate" to="odom/sample"/>
+            <remap from="agiros_pilot/pose_estimate" to="ros_vicon_odom/vicon/pose"/>
+            <!--Voltage Monitor-->
+            <remap from="mavros/battery" to="bf/battery"/>
             <!-- MSP bridge setup -->
             <param name="baudrate" value="1000000"/>
             <param name="device" value="/dev/ttyACM0"/>
-            <param name="thrust_map_file" value="$(find msp_ros)/parameters/thrust_map/thrust_map_hover.csv"/>
+            <param name="thrust_map_file" value="$(find msp_ros)/parameters/thrust_map/thrust_map_default.csv"/>
         </node>
 
-        <node name="vicon_odom" pkg="agiros" type="vicon_odom" output="screen">
-            <remap from="vicon_odom/vicon_in" to="vicon/adr_drone_1/adr_drone_1"/>
-            <remap from="vicon_odom/vicon_out" to="vicon_odom/vicon/pose"/>
+        <node name="ros_vicon_odom" pkg="agiros" type="ros_vicon_odom" output="screen">
+            <remap from="ros_vicon_odom/vicon_in" to="vicon/adr_drone_1/adr_drone_1"/>
+            <remap from="ros_vicon_odom/vicon_out" to="ros_vicon_odom/vicon/pose"/>
         </node>
 
     </group>
