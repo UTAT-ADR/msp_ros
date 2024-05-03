@@ -12,5 +12,6 @@
         <node pkg="rviz" type="rviz" name="viz_face" args="-d $(find msp_ros)/rviz/$(arg quad_name).rviz" ns="$(arg quad_name)"/>
     </group>
 
+    <!-- <include file="$(find msp_ros)/launch/experiment/run_gui.launch"/> -->
 </launch>
 
