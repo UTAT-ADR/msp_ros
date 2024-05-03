@@ -1,6 +1,6 @@
 update_on_get:                          true
-jump_pos_threshold:                     0.5
-jump_att_threshold:                     50.0
+jump_pos_threshold:                     10000.0
+jump_att_threshold:                     10000.0
 R_pos:                                  1.0e-5
 R_att:                                  1.0e-5
 R_acc:                                  1.0e+2
