@@ -21,7 +21,7 @@ dt_min:                 0.01
 dt_telemetry:           0.1  # Publish telemetry messages with this period (used for GUI and IMU)
 
 traj_type:              "poly_min_snap"
-velocity_in_bodyframe:  true
+velocity_in_bodyframe:  false
 takeoff_height:         1.0   # target takeoff height
 takeoff_threshold:      0.5   # height under which takeoff is performed
 start_land_speed:       0.6

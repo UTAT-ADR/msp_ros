@@ -15,7 +15,7 @@
             <remap from="agiros_pilot/thrust_ratio" to="/ratio"/>
             <!--VIO -->
             <!-- <remap from="agiros_pilot/odometry_estimate" to="odom/sample"/> -->
-            <remap from="agiros_pilot/odometry_estimate" to="/vicon/adr_drone_1/odom"/>
+            <remap from="agiros_pilot/odometry_estimate" to="vicon/adr_drone_1/odom"/>
             <!-- <remap from="agiros_pilot/pose_estimate" to="ros_vicon_odom/vicon/pose"/> -->
             <remap from="agiros_pilot/imu_in" to="bf/imu"/>
             <!--Voltage Monitor-->
