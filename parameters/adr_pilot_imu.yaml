@@ -4,8 +4,8 @@ pipeline:
     file:               "ekf_imu.yaml"
     
   sampler:
-    # type:               "Time"
-    type:                "MyPosition"
+    type:               "Time"
+    # type:                "MyPosition"
     file:                "pos_sampler.yaml"
     
   controller:
