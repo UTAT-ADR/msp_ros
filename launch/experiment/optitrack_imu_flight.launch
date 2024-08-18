@@ -5,7 +5,8 @@
 
     <group ns="$(arg quad_name)">
        <!-- Launch Optitrack Bridge -->
-        <include file="$(find msp_ros)/launch/hardware/optitrack_vrpn.launch"/>
+	    <include file="$(find msp_ros)/launch/experiment/hardware/optitrack_vrpn.launch"/>
+        <include file="$(find msp_ros)/launch/experiment/hardware/mjpeg_cam.launch"/>
 
         <node name="agiros_pilot" pkg="agiros" type="adrmsp_agiros" output="screen">
             <param name="agi_param_dir" value="$(find msp_ros)/params"/>
@@ -16,7 +17,7 @@
             <!--VIO -->
             <!-- <remap from="agiros_pilot/odometry_estimate" to="odom/sample"/> -->
             <!-- <remap from="agiros_pilot/odometry_estimate" to="odom/sample"/> -->
-            <remap from="agiros_pilot/pose_estimate" to="ros_vicon_odom/vicon/pose"/>
+            <remap from="agiros_pilot/pose_estimate" to="vrpn_client_node/ADR/pose"/>
             <remap from="agiros_pilot/imu_in" to="bf/imu"/>
             <!--Voltage Monitor-->
             <remap from="mavros/battery" to="bf/battery"/>
@@ -27,10 +28,12 @@
             <param name="thrust_map_file" value="$(find msp_ros)/parameters/thrust_map/orin16.csv"/>
         </node>
 
-        <node name="ros_vicon_odom" pkg="agiros" type="ros_vicon_odom" output="screen">
-            <remap from="ros_vicon_odom/vicon_in" to="vicon/adr_drone_1/adr_drone_1"/>
+
+
+        <!-- <node name="ros_vicon_odom" pkg="agiros" type="ros_vicon_odom" output="screen">
+            <remap from="ros_vicon_odom/vicon_in" to="vrpn_client_node/ADR/pose"/>
             <remap from="ros_vicon_odom/vicon_out" to="ros_vicon_odom/vicon/pose"/>
-        </node>
+        </node> -->
 
     </group>
 
