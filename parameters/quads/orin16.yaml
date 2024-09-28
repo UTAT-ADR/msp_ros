@@ -12,8 +12,8 @@ motor_tau:          0.033                     # [s]
 omega_max:          [10.2276294167, 10.2276294167, 3.00196631343]         # [rad/s]
 
 thrust_map:         [1.562522e-6, 0.0,  0.0]
-kappa:              0.0136                    # [Nm/N]
-torCoeff:           0.0136
+kappa:              0.01386                    # [Nm/N]
+torCoeff:           0.01386
 
 thrust_min:         0.0                       # [N]
 thrust_max:         9.0                       # [N] per motor
