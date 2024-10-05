@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="quad_name" default="orin16"/>
+    <arg name="pilot_config" default="$(arg quad_name)_pilot_imu.yaml"/>
+
+    <group ns="$(arg quad_name)">
+       <!-- Launch Vicon Bridge -->
+        <include file="$(find vicon_bridge)/launch/vicon_195.launch"/>
+        <include file="$(find msp_ros)/launch/experiment/hardware/mjpeg_cam.launch"/>
+        <node name="republish_raw" pkg="image_transport" type="republish" output="screen" args="compressed in:=mjpeg_cam/image raw out:=mjpeg_cam/image"/>
+
+        <node name="agiros_pilot" pkg="agiros" type="adrmsp_agiros" output="screen">
+            <param name="agi_param_dir" value="$(find msp_ros)/params"/>
+            <param name="ros_param_dir" value="$(find msp_ros)/parameters"/>
+            <param name="pilot_config" value="$(arg pilot_config)"/>
+            <!--Dynamic Configuration -->
+            <remap from="agiros_pilot/thrust_ratio" to="/ratio"/>
+            <!--VIO -->
+            <!-- <remap from="agiros_pilot/odometry_estimate" to="odom/sample"/> -->
+            <!-- <remap from="agiros_pilot/odometry_estimate" to="odom/sample"/> -->
+            <remap from="agiros_pilot/pose_estimate" to="ros_vicon_odom/vicon/pose"/>
+            <remap from="agiros_pilot/imu_in" to="bf/imu"/>
+            <!--Voltage Monitor-->
+            <remap from="mavros/battery" to="bf/battery"/>
+            <!-- MSP bridge setup -->
+            <param name="baudrate" value="1000000"/>
+            <param name="device" value="/dev/ttyACM0"/>
+            <param name="thrust_ratio" value="1.0"/>
+            <param name="thrust_map_file" value="$(find msp_ros)/parameters/thrust_map/orin16.csv"/>
+        </node>
+
+        <node name="ros_vicon_odom" pkg="agiros" type="ros_vicon_odom" output="screen">
+            <remap from="ros_vicon_odom/vicon_in" to="vicon/adr_drone_2/adr_drone_2"/>
+            <remap from="ros_vicon_odom/vicon_out" to="ros_vicon_odom/vicon/pose"/>
+        </node>
+
+        <node name="ros_state_node" pkg="agiros" type="ros_state_node" output="screen">
+            <remap from="vicon_in" to="ros_vicon_odom/vicon/pose"/>
+            <remap from="odom_in" to="agiros_pilot/odometry"/>
+            <remap from="imu_in" to="bf/imu"/>
+            <remap from="rpm_in" to="bf/rpm"/>
+        </node>
+
+    </group>
+
+</launch>
